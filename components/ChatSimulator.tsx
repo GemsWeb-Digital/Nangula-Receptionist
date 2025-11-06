@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const messages = [
-  { sender: 'user', text: "Do you accept bookings?" },
-  { sender: 'ai', text: "Yes — I can check availability and confirm instantly. What date are you looking at?" },
-  { sender: 'user', text: "What are your business hours?" },
-  { sender: 'ai', text: "We're open Mon-Fri, 8:00 AM to 5:00 PM, and Sat 9:00 AM to 1:00 PM. How can I assist?" },
-  { sender: 'user', text: "Can I book for Saturday?" },
-  { sender: 'ai', text: "Absolutely! For bookings, please message us directly on WhatsApp." },
+  { sender: 'user', text: "Good morning, can you help me with a booking?" },
+  { sender: 'ai', text: "Good morning! I can certainly help with that. What date did you have in mind?" },
+  { sender: 'user', text: "What are your hours on the weekend?" },
+  { sender: 'ai', text: "We're open on Saturdays from 9:00 AM to 1:00 PM. We are closed on Sundays. Can I help with anything else?" },
+  { sender: 'user', text: "Great, can I book for this Saturday?" },
+  // FIX: Corrected typo in sender property from `ai'` to `'ai'`.
+  { sender: 'ai', text: "Of course. To finalize a booking, the best way is to send us a message on WhatsApp, and we can confirm everything for you there." },
 ];
 
 const ChatSimulator: React.FC = () => {
@@ -26,7 +27,7 @@ const ChatSimulator: React.FC = () => {
                     setDisplayedMessages(prev => [...prev, newMessage]);
                 }
                 i++;
-                currentTimeout = window.setTimeout(nextMessage, i === 1 ? 1000 : 2000);
+                currentTimeout = window.setTimeout(nextMessage, i === 1 ? 1000 : 2200);
             } else {
                 // Restart after a pause
                 currentTimeout = window.setTimeout(() => {
@@ -59,7 +60,7 @@ const ChatSimulator: React.FC = () => {
         {displayedMessages.map((msg, index) => (
           <div
             key={index}
-            className={`${msg.sender === 'user' ? 'neuro-chat-user' : 'neuro-chat-ai'} fade-in`}
+            className={`${msg.sender === 'user' ? 'neuro-chat-user' : 'neuro-chat-ai'} ${index === displayedMessages.length -1 ? 'fade-in' : ''}`}
           >
             {msg.text}
           </div>

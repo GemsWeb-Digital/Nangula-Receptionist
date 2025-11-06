@@ -21,7 +21,7 @@ const DemoChat: React.FC<DemoChatProps> = ({ onLogout, onGoHome }) => {
     {
       id: 'welcome-1',
       sender: 'ai',
-      content: 'Good day! 👋 I\'m Nangula, your AI receptionist. I\'m here to demonstrate how I can help your business. Feel free to ask me anything!',
+      content: 'Good day! I\'m Nangula, and I\'m here to show you how I can assist your business. Please feel free to ask me anything you would like to know.',
       timestamp: new Date().toISOString(),
     },
   ]);
@@ -87,7 +87,7 @@ const DemoChat: React.FC<DemoChatProps> = ({ onLogout, onGoHome }) => {
     <div className="flex flex-col h-screen bg-[#E0E0E0] p-4 items-center justify-center">
         <header className="fixed top-0 left-0 right-0 z-20 bg-gradient-to-br from-[#D4A574] to-[#C8A882] p-3 text-white shadow-lg">
             <div className="max-w-4xl mx-auto flex justify-between items-center">
-                <div className="font-bold text-sm">🎯 DEMO MODE</div>
+                <div className="font-bold text-sm">DEMO MODE</div>
                 <div>
                   <button onClick={onGoHome} className="text-xs font-semibold bg-white/20 hover:bg-white/30 px-3 py-1 rounded-md transition-colors mr-4">← Back to Homepage</button>
                   <button onClick={onLogout} className="text-xs font-semibold bg-white/20 hover:bg-white/30 px-3 py-1 rounded-md transition-colors">End Demo</button>
@@ -99,7 +99,7 @@ const DemoChat: React.FC<DemoChatProps> = ({ onLogout, onGoHome }) => {
             {showToast && (
                 <div className="absolute top-4 right-4 z-20 neuro-card bg-gradient-to-br from-[#E5E5E5] to-[#D8D8D8] p-4 w-full max-w-xs text-center fade-in">
                     <p className="font-bold text-lg text-gray-800">Impressed with Nangula AI?</p>
-                    <p className="text-sm text-gray-600 mb-3">Get this for YOUR business!</p>
+                    <p className="text-sm text-gray-600 mb-3">We can set up a smart assistant just like this for your business in under 15 minutes.</p>
                     <a 
                         href="https://wa.me/264853411522?text=Hello%20Nangula%20AI!%20I'm%20interested%20in%20your%20service." 
                         target="_blank" 

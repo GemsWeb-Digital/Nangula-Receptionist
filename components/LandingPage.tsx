@@ -1,6 +1,11 @@
 import React from 'react';
 import ChatSimulator from './ChatSimulator';
-import { FacebookIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon } from './icons/Icons';
+import { 
+    FacebookIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon,
+    ChatIcon, CalendarIcon, GlobeIcon,
+    PhoneMissedIcon, InconsistentIcon, CostIcon,
+    ConnectIcon, BrainIcon, ActivateIcon
+} from './icons/Icons';
 
 interface LandingPageProps {
   onTryDemo: () => void;
@@ -47,9 +52,16 @@ const Hero: React.FC<LandingPageProps> = ({ onTryDemo }) => (
     </section>
 );
 
-const FeatureCard: React.FC<{icon: string, title: string, children: React.ReactNode}> = ({ icon, title, children }) => (
+const IconContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+    <div className="mx-auto mb-6 w-24 h-24 rounded-full bg-gradient-to-br from-[#E5E5E5] to-[#D8D8D8] shadow-[8px_8px_16px_#A3A3A3,-8px_-8px_16px_#FFFFFF] flex items-center justify-center">
+        {children}
+    </div>
+);
+
+
+const FeatureCard: React.FC<{icon: React.ReactNode, title: string, children: React.ReactNode}> = ({ icon, title, children }) => (
     <div className="neuro-card text-center p-8 transition-transform hover:-translate-y-2">
-        <div className="mx-auto mb-4 w-20 h-20 rounded-full bg-gradient-to-br from-[#E5E5E5] to-[#D8D8D8] shadow-[6px_6px_12px_#A3A3A3,-6px_-6px_12px_#FFFFFF] flex items-center justify-center text-4xl">{icon}</div>
+        <IconContainer>{icon}</IconContainer>
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <p className="text-[#6B6B6B]">{children}</p>
     </div>
@@ -64,9 +76,9 @@ const Solution = () => (
                 <p className="subheadline max-w-3xl mx-auto">A modern assistant tuned for Namibian businesses: fast, culturally aware, and always available.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <FeatureCard icon="💬" title="24/7 WhatsApp & Web Support">Never miss a message. Nangula AI responds instantly on WhatsApp, your website, Instagram DMs, and Facebook Messenger.</FeatureCard>
-                <FeatureCard icon="📅" title="Instant Appointment Booking">AI checks your availability and books appointments in real-time, syncing directly with your Google Calendar.</FeatureCard>
-                <FeatureCard icon="🌍" title="Built for Namibia">Understands local phrases, landmarks (FNB Building, Wernhil Mall), and payments like eWallet & BlueWallet.</FeatureCard>
+                <FeatureCard icon={<ChatIcon />} title="24/7 WhatsApp & Web Support">Never miss a message. Nangula AI responds instantly on WhatsApp, your website, Instagram DMs, and Facebook Messenger.</FeatureCard>
+                <FeatureCard icon={<CalendarIcon />} title="Instant Appointment Booking">AI checks your availability and books appointments in real-time, syncing directly with your Google Calendar.</FeatureCard>
+                <FeatureCard icon={<GlobeIcon />} title="Built for Namibia">Understands local phrases, landmarks like the FNB Building or Wernhil Mall, and payments such as eWallet & BlueWallet.</FeatureCard>
             </div>
         </div>
     </section>
@@ -83,17 +95,17 @@ const Problem = () => (
             </div>
             <div className="grid md:grid-cols-3 gap-8">
                 <div className="neuro-card-inset p-8 text-center">
-                    <div className="text-5xl mb-4">📞</div>
+                    <IconContainer><PhoneMissedIcon /></IconContainer>
                     <h3 className="text-2xl font-bold mb-2">Missed Calls & Leads</h3>
                     <p className="text-gray-600">70% of messages after 5 PM go unanswered until the next day. You're losing leads while you sleep.</p>
                 </div>
                 <div className="neuro-card-inset p-8 text-center">
-                    <div className="text-5xl mb-4">💬</div>
+                    <IconContainer><InconsistentIcon /></IconContainer>
                     <h3 className="text-2xl font-bold mb-2">Inconsistent Service</h3>
                     <p className="text-gray-600">Different staff give different answers. Customers get confused, and trust erodes.</p>
                 </div>
                 <div className="neuro-card-inset p-8 text-center">
-                    <div className="text-5xl mb-4">💰</div>
+                    <IconContainer><CostIcon /></IconContainer>
                     <h3 className="text-2xl font-bold mb-2">High Operational Costs</h3>
                     <p className="text-gray-600">Hiring a full-time receptionist costs thousands, but still can't cover nights and weekends.</p>
                 </div>
@@ -110,21 +122,21 @@ const HowItWorks = () => (
             <p className="subheadline max-w-2xl mx-auto mb-16">Connect your channels, provide your business info, and let Nangula AI handle the rest. It's that simple.</p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8">
                 <div className="flex flex-col items-center">
-                    <div className="neuro-card w-32 h-32 flex items-center justify-center text-5xl mb-4">🔌</div>
+                    <div className="neuro-card w-36 h-36 flex items-center justify-center mb-4"><ConnectIcon /></div>
                     <h3 className="text-xl font-bold">1. Connect</h3>
                     <p className="text-gray-600">Link your WhatsApp or website.</p>
                 </div>
                 <div className="text-4xl text-gray-400 font-light hidden md:block">→</div>
                  <div className="text-4xl text-gray-400 font-light md:hidden">↓</div>
                 <div className="flex flex-col items-center">
-                    <div className="neuro-card w-32 h-32 flex items-center justify-center text-5xl mb-4">🧠</div>
+                    <div className="neuro-card w-36 h-36 flex items-center justify-center mb-4"><BrainIcon /></div>
                     <h3 className="text-xl font-bold">2. Train</h3>
                     <p className="text-gray-600">Provide your business details.</p>
                 </div>
                 <div className="text-4xl text-gray-400 font-light hidden md:block">→</div>
                  <div className="text-4xl text-gray-400 font-light md:hidden">↓</div>
                 <div className="flex flex-col items-center">
-                    <div className="neuro-card w-32 h-32 flex items-center justify-center text-5xl mb-4">✅</div>
+                    <div className="neuro-card w-36 h-36 flex items-center justify-center mb-4"><ActivateIcon /></div>
                     <h3 className="text-xl font-bold">3. Activate</h3>
                     <p className="text-gray-600">Start capturing leads 24/7.</p>
                 </div>
