@@ -1,14 +1,22 @@
 "use client";
 
-import LandingPage from "@/components/LandingPage";
-import { useRouter } from "next/navigation";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function HomePage() {
   const router = useRouter();
 
-  const handleTryDemo = () => {
-    router.push('/login');
-  };
+  useEffect(() => {
+    // For this phase, we redirect immediately to the new dashboard page.
+    // In a real app, this would be the landing page or a login-gated redirect.
+    router.replace('/dashboard/knowledge-base');
+  }, [router]);
 
-  return <LandingPage onTryDemo={handleTryDemo} />;
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-[#E0E0E0]">
+      <div className="text-center">
+        <p className="text-lg font-semibold text-gray-700">Redirecting to Dashboard...</p>
+      </div>
+    </div>
+  );
 }
