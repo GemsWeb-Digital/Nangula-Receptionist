@@ -9,7 +9,7 @@ const Logo: React.FC = () => (
     <img 
         src="https://gemsweb.xyz/wp-content/uploads/2025/10/Nangula-logo.png" 
         alt="Nangula AI Logo" 
-        className="w-48 h-auto mx-auto mb-6"
+        className="w-48 h-auto mx-auto mb-6 drop-shadow-sm"
     />
 );
 
@@ -40,10 +40,8 @@ const MathChallenge: React.FC<MathChallengeProps> = ({ onLoginSuccess }) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
     setTimeout(() => {
       if (parseInt(answer, 10) === correctAnswer) {
-        // Simulate successful JWT generation
         const dummyToken = `dummy-jwt-for-demo-${Date.now()}`;
         onLoginSuccess(dummyToken);
       } else {
@@ -55,21 +53,21 @@ const MathChallenge: React.FC<MathChallengeProps> = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#f9f9f9]">
-      <div className="w-full max-w-sm p-8 space-y-6 bg-white shadow-xl rounded-2xl">
+    <div className="flex items-center justify-center min-h-screen p-4">
+      <div className="neuro-card w-full max-w-sm p-8 space-y-6">
         <Logo />
         <div className="text-center">
-            <h1 className="text-xl font-bold text-gray-800">
+            <h1 className="text-xl font-bold text-[#2D2D2D]">
                 Quick Access
             </h1>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-[#6B6B6B]">
                 To protect against bots, please solve this simple question.
             </p>
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="answer" className="block text-md font-bold text-center text-gray-800">
+            <label htmlFor="answer" className="block text-lg font-bold text-center text-[#2D2D2D]">
               {challenge?.question}
             </label>
             <input
@@ -79,7 +77,7 @@ const MathChallenge: React.FC<MathChallengeProps> = ({ onLoginSuccess }) => {
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               required
-              className="mt-4 block w-full px-4 py-3 bg-gray-100 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#D4A017] focus:border-[#D4A017] text-lg text-center rounded-lg placeholder-gray-500 transition-colors"
+              className="neuro-input mt-4 text-lg text-center"
               placeholder="Your Answer"
               autoFocus
             />
@@ -91,7 +89,7 @@ const MathChallenge: React.FC<MathChallengeProps> = ({ onLoginSuccess }) => {
             <button
               type="submit"
               disabled={isLoading || !answer}
-              className="group relative w-full flex justify-center py-3 px-4 text-sm font-bold text-white bg-[#D4A017] hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4A017] rounded-lg disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-150 ease-in-out"
+              className="neuro-button-accent w-full"
             >
               {isLoading ? 'Verifying...' : 'Submit'}
             </button>
